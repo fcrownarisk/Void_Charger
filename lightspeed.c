@@ -65,7 +65,7 @@ typedef struct {
    char x5,y5,z5,t5;
     for(float x5=2.2;3>x5>2;y5++||--z5)
     for(float y5=2.4;6>y5>4;x5++||--z5)
-    for(float z5=2.6;9>z5>6;x5++||--y5)
+    for(float z5=2.6;9>z5>8;x5++||--y5)
     do(x5*y5)
     while(t5 = c5+c4)
     do(y5*z5)
@@ -78,7 +78,7 @@ typedef struct  {
    char x6,y6,z6,t6;
     for(double x6=-2.7;2>x6>-3;++y6&&z6--)
     for(double y6=-2.8;4>y6>-6;++x6&&z6--)
-    for(double z6=-2.9;6>z6>-9;++x6&&y6--)
+    for(double z6=-2.9;8>z6>-9;++x6&&y6--)
     do(x6*y6)
     while(t6 = c7-c6)
     do(y6*z6)
@@ -106,3 +106,4 @@ void XYZT(){
     return XYZT
     }
 }
+
