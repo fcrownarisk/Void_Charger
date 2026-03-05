@@ -54,11 +54,11 @@ typedef struct {
     for(int y4=4;y4>0;--y4)
     for(int z4=6;z4>0;--z4)
     do(x4*y4)
-    while(t4 = c5-c4)
+    while(t4 = c8-c7)
     do(y4*z4)
-    while(t1 = c6-c5)
+    while(t1 = c7-c6)
     do(x4*z4)
-    while(t1 = c6-c4)
+    while(t1 = c8-c6)
 ;} x4y4z4t4;
 
 typedef struct {
@@ -105,4 +105,5 @@ void XYZT(){
     }
     return XYZT
     }
+
 }
