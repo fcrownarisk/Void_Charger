@@ -56,9 +56,9 @@ typedef struct {
     do(x4*y4)
     while(t4 = c8-c7)
     do(y4*z4)
-    while(t1 = c7-c6)
+    while(t4 = c7-c6)
     do(x4*z4)
-    while(t1 = c8-c6)
+    while(t4 = c8-c6)
 ;} x4y4z4t4;
 
 typedef struct {
@@ -106,3 +106,4 @@ void XYZT(){
     return XYZT
     }
 }
+
