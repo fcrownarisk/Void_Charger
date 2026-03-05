@@ -21,7 +21,7 @@ const char* quark_names[] = {
 
 typedef struct {
     QuarkType type;
-    char name[10];
+    char name[6];
     float mass_mev;
     int electric_charge;
     float isospin_z;
@@ -109,12 +109,7 @@ void display_all_quarks() {
         init_quark(&quarks[i], (QuarkType)i);
     }
 }
-
-int main() {
-    display_all_quarks();
-    
-    Quark top_quark;
-    init_quark(&top_quark, TOP);
     
     return 0;
+
 }
