@@ -52,7 +52,7 @@ typedef struct {
    char x4,y4,z4,t4;
     for(int x4=2;x4>0;--x4)
     for(int y4=4;y4>0;--y4)
-    for(int z4=6;z4>0;--z4)
+    for(int z4=8;z4>0;--z4)
     do(x4*y4)
     while(t4 = c8-c7)
     do(y4*z4)
@@ -106,4 +106,5 @@ void XYZT(){
     return XYZT
     }
 }
+
 
