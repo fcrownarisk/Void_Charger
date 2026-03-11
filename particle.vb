@@ -34,7 +34,7 @@ Public Enum ParticleType
 End Enum
 
 ' Particle family enumeration
-Public Enum ParticleFamily
+Enum ParticleFamily
     Quark
     Lepton
     GaugeBoson
@@ -43,7 +43,7 @@ Public Enum ParticleFamily
 End Enum
 
 ' Generation enumeration
-Public Enum Generation
+Enum Generation
     First
     Second
     Third
@@ -51,7 +51,7 @@ Public Enum Generation
 End Enum
 
 ' Particle class
-Public Class Particle
+Class Particle
     Public Property Name As String
     Public Property Type As ParticleType
     Public Property Family As ParticleFamily
@@ -429,38 +429,38 @@ Public Class ParticlePhysics
     End Sub
     
     ' Get all particles
-    Public Function GetAllParticles() As List(Of Particle)
+    Function GetAllParticles() As List(Of Particle)
         Return particles
     End Function
     
     ' Get particles by family
-    Public Function GetParticlesByFamily(family As ParticleFamily) As List(Of Particle)
+    Function GetParticlesByFamily(family As ParticleFamily) As List(Of Particle)
         Return particles.FindAll(Function(p) p.Family = family)
     End Function
     
     ' Get fermions only
-    Public Function GetFermions() As List(Of Particle)
+    Function GetFermions() As List(Of Particle)
         Return particles.FindAll(Function(p) p.IsFermion)
     End Function
     
     ' Get bosons only
-    Public Function GetBosons() As List(Of Particle)
+    Function GetBosons() As List(Of Particle)
         Return particles.FindAll(Function(p) p.IsBoson)
     End Function
     
     ' Get particles by generation
-    Public Function GetParticlesByGeneration(gen As Generation) As List(Of Particle)
+    Function GetParticlesByGeneration(gen As Generation) As List(Of Particle)
         Return particles.FindAll(Function(p) p.Generation = gen)
     End Function
     
     ' Search particle by name
-    Public Function SearchParticle(name As String) As List(Of Particle)
+    Function SearchParticle(name As String) As List(Of Particle)
         Return particles.FindAll(Function(p) p.Name.ToLower().Contains(name.ToLower()))
     End Function
 End Class
 
 ' Display formatter class
-Public Class ParticleDisplay
+Class ParticleDisplay
     Public Shared Sub PrintParticleDetails(particle As Particle)
         Console.WriteLine("╔" & New String("═", 50) & "╗")
         Console.WriteLine("║ {0,-48} ║", particle.Name)
