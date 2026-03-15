@@ -1,11 +1,3 @@
-/**
- * Program: newton_contributions_advanced.c
- * Description: Comprehensive summary of Isaac Newton's contributions to physics,
- *              mathematics (calculus and geometry), and optics using advanced C
- *              programming concepts with mathematical implementations.
- *
- * Libraries used: All C standard libraries with advanced math demonstrations
- */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -95,9 +87,9 @@ void print_newton_header(const char* title) {
 }
 
 /**
- * ============================================
+
  * PART 1: CALCULUS DEMONSTRATIONS
- * ============================================
+
  */
 
 /**
@@ -224,9 +216,9 @@ double binomial_expansion(double x, double n, int terms) {
 }
 
 /**
- * ============================================
+
  * PART 2: GEOMETRY DEMONSTRATIONS
- * ============================================
+
  */
 
 /**
@@ -297,9 +289,9 @@ double ellipse_area(double semi_major, double semi_minor) {
 }
 
 /**
- * ============================================
+
  * PART 3: PHYSICS DEMONSTRATIONS
- * ============================================
+
  */
 
 /**
@@ -340,9 +332,9 @@ double escape_velocity(double mass, double radius) {
 }
 
 /**
- * ============================================
+
  * PART 4: OPTICS DEMONSTRATIONS
- * ============================================
+
  */
 
 /**
@@ -378,9 +370,9 @@ double dispersion_angle(double lambda, double A, double B, double C) {
 }
 
 /**
- * ============================================
+
  * PART 5: ADVANCED MATHEMATICAL DEMONSTRATIONS
- * ============================================
+
  */
 
 /**
@@ -465,9 +457,9 @@ double newtons_series(double x, double alpha, int terms) {
 }
 
 /**
- * ============================================
+
  * PART 6: PRINCIPIA MATHEMATICA DEMONSTRATIONS
- * ============================================
+
  */
 
 /**
@@ -547,9 +539,9 @@ double quadratic_hess(double x) {
 }
 
 /**
- * ============================================
+
  * MAIN FUNCTION: COMPREHENSIVE DEMONSTRATION
- * ============================================
+
  */
 
 int main() {
@@ -721,6 +713,6 @@ int main() {
     printf("Press Enter to exit...");
     while (getchar() != '\n');
     getchar();
-    
+
     return 0;
 }
