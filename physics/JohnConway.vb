@@ -27,7 +27,7 @@ Public Class GameOfLifeForm
     Private Const CELL_SIZE As Integer = 8
     
     ' Game state
-    Private currentGrid As Boolean(,) = New Boolean(GRID_WIDTH - 1, GRID_HEIGHT - 1) {}
+    Private Gird As Boolean(,) = New Boolean(GRID_WIDTH - 1, GRID_HEIGHT - 1) {}
     Private nextGrid As Boolean(,) = New Boolean(GRID_WIDTH - 1, GRID_HEIGHT - 1) {}
     Private generation As Integer = 0
     Private isRunning As Boolean = False
@@ -167,7 +167,7 @@ Public Class GameOfLifeForm
     ''' Initialize the game grid
     
     Private Sub InitializeGame()
-        Array.Clear(currentGrid, 0, currentGrid.Length)
+        Array.Clear(Gird, 0, Gird.Length)
         Array.Clear(nextGrid, 0, nextGrid.Length)
         generation = 0
         UpdateLabels()
@@ -211,7 +211,7 @@ Public Class GameOfLifeForm
         Dim rand As New Random()
         For x As Integer = 0 To GRID_WIDTH - 1
             For y As Integer = 0 To GRID_HEIGHT - 1
-                currentGrid(x, y) = rand.NextDouble() < 0.3 ' 30% chance of life
+                Gird(x, y) = rand.NextDouble() < 0.3 ' 30% chance of life
             Next
         Next
         generation = 0
@@ -231,38 +231,38 @@ Public Class GameOfLifeForm
         Dim offsetY As Integer = 20
         
         ' Left block
-        currentGrid(offsetX + 0, offsetY + 4) = True
-        currentGrid(offsetX + 1, offsetY + 4) = True
-        currentGrid(offsetX + 0, offsetY + 5) = True
-        currentGrid(offsetX + 1, offsetY + 5) = True
+        Gird(offsetX + 0, offsetY + 4) = True
+        Gird(offsetX + 1, offsetY + 4) = True
+        Gird(offsetX + 0, offsetY + 5) = True
+        Gird(offsetX + 1, offsetY + 5) = True
         
         ' Left structure
-        currentGrid(offsetX + 10, offsetY + 4) = True
-        currentGrid(offsetX + 10, offsetY + 5) = True
-        currentGrid(offsetX + 10, offsetY + 6) = True
-        currentGrid(offsetX + 11, offsetY + 3) = True
-        currentGrid(offsetX + 11, offsetY + 7) = True
-        currentGrid(offsetX + 12, offsetY + 2) = True
-        currentGrid(offsetX + 12, offsetY + 8) = True
-        currentGrid(offsetX + 13, offsetY + 5) = True
-        currentGrid(offsetX + 14, offsetY + 3) = True
-        currentGrid(offsetX + 14, offsetY + 7) = True
-        currentGrid(offsetX + 15, offsetY + 4) = True
-        currentGrid(offsetX + 15, offsetY + 5) = True
-        currentGrid(offsetX + 15, offsetY + 6) = True
-        currentGrid(offsetX + 16, offsetY + 5) = True
+        Gird(offsetX + 10, offsetY + 4) = True
+        Gird(offsetX + 10, offsetY + 5) = True
+        Gird(offsetX + 10, offsetY + 6) = True
+        Gird(offsetX + 11, offsetY + 3) = True
+        Gird(offsetX + 11, offsetY + 7) = True
+        Gird(offsetX + 12, offsetY + 2) = True
+        Gird(offsetX + 12, offsetY + 8) = True
+        Gird(offsetX + 13, offsetY + 5) = True
+        Gird(offsetX + 14, offsetY + 3) = True
+        Gird(offsetX + 14, offsetY + 7) = True
+        Gird(offsetX + 15, offsetY + 4) = True
+        Gird(offsetX + 15, offsetY + 5) = True
+        Gird(offsetX + 15, offsetY + 6) = True
+        Gird(offsetX + 16, offsetY + 5) = True
         
         ' Right block
-        currentGrid(offsetX + 20, offsetY + 2) = True
-        currentGrid(offsetX + 20, offsetY + 3) = True
-        currentGrid(offsetX + 21, offsetY + 2) = True
-        currentGrid(offsetX + 21, offsetY + 3) = True
+        Gird(offsetX + 20, offsetY + 2) = True
+        Gird(offsetX + 20, offsetY + 3) = True
+        Gird(offsetX + 21, offsetY + 2) = True
+        Gird(offsetX + 21, offsetY + 3) = True
         
         ' Right structure
-        currentGrid(offsetX + 34, offsetY + 2) = True
-        currentGrid(offsetX + 34, offsetY + 3) = True
-        currentGrid(offsetX + 35, offsetY + 2) = True
-        currentGrid(offsetX + 35, offsetY + 3) = True
+        Gird(offsetX + 34, offsetY + 2) = True
+        Gird(offsetX + 34, offsetY + 3) = True
+        Gird(offsetX + 35, offsetY + 2) = True
+        Gird(offsetX + 35, offsetY + 3) = True
         
         Me.Invalidate()
         UpdateLabels()
@@ -285,64 +285,64 @@ Public Class GameOfLifeForm
         Select Case patternIndex
             Case 0 ' Glider
                 If centerX < GRID_WIDTH - 2 AndAlso centerY < GRID_HEIGHT - 2 Then
-                    currentGrid(centerX + 1, centerY) = True
-                    currentGrid(centerX + 2, centerY + 1) = True
-                    currentGrid(centerX, centerY + 2) = True
-                    currentGrid(centerX + 1, centerY + 2) = True
-                    currentGrid(centerX + 2, centerY + 2) = True
+                    Gird(centerX + 1, centerY) = True
+                    Gird(centerX + 2, centerY + 1) = True
+                    Gird(centerX, centerY + 2) = True
+                    Gird(centerX + 1, centerY + 2) = True
+                    Gird(centerX + 2, centerY + 2) = True
                 End If
                 
             Case 1 ' Blinker (period 3 oscillator)
                 If centerY < GRID_HEIGHT - 2 Then
-                    currentGrid(centerX, centerY) = True
-                    currentGrid(centerX, centerY + 1) = True
-                    currentGrid(centerX, centerY + 2) = True
+                    Gird(centerX, centerY) = True
+                    Gird(centerX, centerY + 1) = True
+                    Gird(centerX, centerY + 2) = True
                 End If
                 
             Case 2 ' Block (still life)
                 If centerX < GRID_WIDTH - 1 AndAlso centerY < GRID_HEIGHT - 1 Then
-                    currentGrid(centerX, centerY) = True
-                    currentGrid(centerX + 1, centerY) = True
-                    currentGrid(centerX, centerY + 1) = True
-                    currentGrid(centerX + 1, centerY + 1) = True
+                    Gird(centerX, centerY) = True
+                    Gird(centerX + 1, centerY) = True
+                    Gird(centerX, centerY + 1) = True
+                    Gird(centerX + 1, centerY + 1) = True
                 End If
                 
             Case 3 ' Beehive (still life)
                 If centerX < GRID_WIDTH - 3 AndAlso centerY < GRID_HEIGHT - 2 Then
-                    currentGrid(centerX + 1, centerY) = True
-                    currentGrid(centerX + 2, centerY) = True
-                    currentGrid(centerX, centerY + 1) = True
-                    currentGrid(centerX + 3, centerY + 1) = True
-                    currentGrid(centerX + 1, centerY + 2) = True
-                    currentGrid(centerX + 2, centerY + 2) = True
+                    Gird(centerX + 1, centerY) = True
+                    Gird(centerX + 2, centerY) = True
+                    Gird(centerX, centerY + 1) = True
+                    Gird(centerX + 3, centerY + 1) = True
+                    Gird(centerX + 1, centerY + 2) = True
+                    Gird(centerX + 2, centerY + 2) = True
                 End If
                 
             Case 4 ' Loaf (still life)
                 If centerX < GRID_WIDTH - 3 AndAlso centerY < GRID_HEIGHT - 3 Then
-                    currentGrid(centerX + 1, centerY) = True
-                    currentGrid(centerX + 2, centerY) = True
-                    currentGrid(centerX, centerY + 1) = True
-                    currentGrid(centerX + 3, centerY + 1) = True
-                    currentGrid(centerX + 1, centerY + 2) = True
-                    currentGrid(centerX + 3, centerY + 2) = True
-                    currentGrid(centerX + 2, centerY + 3) = True
+                    Gird(centerX + 1, centerY) = True
+                    Gird(centerX + 2, centerY) = True
+                    Gird(centerX, centerY + 1) = True
+                    Gird(centerX + 3, centerY + 1) = True
+                    Gird(centerX + 1, centerY + 2) = True
+                    Gird(centerX + 3, centerY + 2) = True
+                    Gird(centerX + 2, centerY + 3) = True
                 End If
                 
             Case 5 ' Boat (still life)
                 If centerX < GRID_WIDTH - 2 AndAlso centerY < GRID_HEIGHT - 2 Then
-                    currentGrid(centerX, centerY) = True
-                    currentGrid(centerX + 1, centerY) = True
-                    currentGrid(centerX, centerY + 1) = True
-                    currentGrid(centerX + 2, centerY + 1) = True
-                    currentGrid(centerX + 1, centerY + 2) = True
+                    Gird(centerX, centerY) = True
+                    Gird(centerX + 1, centerY) = True
+                    Gird(centerX, centerY + 1) = True
+                    Gird(centerX + 2, centerY + 1) = True
+                    Gird(centerX + 1, centerY + 2) = True
                 End If
                 
             Case 6 ' Tub (still life)
                 If centerX < GRID_WIDTH - 2 AndAlso centerY < GRID_HEIGHT - 2 Then
-                    currentGrid(centerX + 1, centerY) = True
-                    currentGrid(centerX, centerY + 1) = True
-                    currentGrid(centerX + 2, centerY + 1) = True
-                    currentGrid(centerX + 1, centerY + 2) = True
+                    Gird(centerX + 1, centerY) = True
+                    Gird(centerX, centerY + 1) = True
+                    Gird(centerX + 2, centerY + 1) = True
+                    Gird(centerX + 1, centerY + 2) = True
                 End If
                 
             Case 7 ' Pulsar (period 3 oscillator)
@@ -364,7 +364,7 @@ Public Class GameOfLifeForm
                         Dim px As Integer = centerX + pulsarPattern(i, 0)
                         Dim py As Integer = centerY + pulsarPattern(i, 1)
                         If px < GRID_WIDTH AndAlso py < GRID_HEIGHT Then
-                            currentGrid(px, py) = True
+                            Gird(px, py) = True
                         End If
                     Next
                 End If
@@ -372,29 +372,29 @@ Public Class GameOfLifeForm
             Case 8 ' Pentadecathlon (period 15 oscillator)
                 If centerX < GRID_WIDTH - 10 AndAlso centerY < GRID_HEIGHT - 3 Then
                     For i As Integer = 0 To 9
-                        currentGrid(centerX + i, centerY + 1) = True
+                        Gird(centerX + i, centerY + 1) = True
                     Next
-                    currentGrid(centerX + 1, centerY) = True
-                    currentGrid(centerX + 2, centerY) = True
-                    currentGrid(centerX + 7, centerY) = True
-                    currentGrid(centerX + 8, centerY) = True
-                    currentGrid(centerX + 1, centerY + 2) = True
-                    currentGrid(centerX + 2, centerY + 2) = True
-                    currentGrid(centerX + 7, centerY + 2) = True
-                    currentGrid(centerX + 8, centerY + 2) = True
+                    Gird(centerX + 1, centerY) = True
+                    Gird(centerX + 2, centerY) = True
+                    Gird(centerX + 7, centerY) = True
+                    Gird(centerX + 8, centerY) = True
+                    Gird(centerX + 1, centerY + 2) = True
+                    Gird(centerX + 2, centerY + 2) = True
+                    Gird(centerX + 7, centerY + 2) = True
+                    Gird(centerX + 8, centerY + 2) = True
                 End If
                 
             Case 9 ' Lightweight Spaceship (LWSS)
                 If centerX < GRID_WIDTH - 5 AndAlso centerY < GRID_HEIGHT - 4 Then
-                    currentGrid(centerX + 1, centerY) = True
-                    currentGrid(centerX + 2, centerY) = True
-                    currentGrid(centerX + 3, centerY) = True
-                    currentGrid(centerX + 4, centerY) = True
-                    currentGrid(centerX, centerY + 1) = True
-                    currentGrid(centerX + 4, centerY + 1) = True
-                    currentGrid(centerX + 4, centerY + 2) = True
-                    currentGrid(centerX, centerY + 3) = True
-                    currentGrid(centerX + 3, centerY + 3) = True
+                    Gird(centerX + 1, centerY) = True
+                    Gird(centerX + 2, centerY) = True
+                    Gird(centerX + 3, centerY) = True
+                    Gird(centerX + 4, centerY) = True
+                    Gird(centerX, centerY + 1) = True
+                    Gird(centerX + 4, centerY + 1) = True
+                    Gird(centerX + 4, centerY + 2) = True
+                    Gird(centerX, centerY + 3) = True
+                    Gird(centerX + 3, centerY + 3) = True
                 End If
         End Select
         
@@ -420,7 +420,7 @@ Public Class GameOfLifeForm
                         For y As Integer = 0 To GRID_HEIGHT - 1
                             Dim line As String = ""
                             For x As Integer = 0 To GRID_WIDTH - 1
-                                line += If(currentGrid(x, y), "1", "0")
+                                line += If(Gird(x, y), "1", "0")
                             Next
                             writer.WriteLine(line)
                         Next
@@ -461,7 +461,7 @@ Public Class GameOfLifeForm
                             Dim line As String = reader.ReadLine()
                             For x As Integer = 0 To Math.Min(width, GRID_WIDTH) - 1
                                 If x < line.Length Then
-                                    currentGrid(x, y) = (line(x) = "1"c)
+                                    Gird(x, y) = (line(x) = "1"c)
                                 End If
                             Next
                         Next
@@ -488,7 +488,7 @@ Public Class GameOfLifeForm
             
             If gridX >= 0 AndAlso gridX < GRID_WIDTH AndAlso 
                gridY >= 0 AndAlso gridY < GRID_HEIGHT Then
-                currentGrid(gridX, gridY) = Not currentGrid(gridX, gridY)
+                Gird(gridX, gridY) = Not Gird(gridX, gridY)
                 Me.Invalidate()
                 UpdateLabels()
                 toolStripStatusLabel.Text = $"Cell ({gridX}, {gridY}) toggled"
@@ -506,7 +506,7 @@ Public Class GameOfLifeForm
             
             If gridX >= 0 AndAlso gridX < GRID_WIDTH AndAlso 
                gridY >= 0 AndAlso gridY < GRID_HEIGHT Then
-                currentGrid(gridX, gridY) = True
+                Gird(gridX, gridY) = True
                 Me.Invalidate()
                 UpdateLabels()
             End If
@@ -532,7 +532,7 @@ Public Class GameOfLifeForm
             For y As Integer = 0 To GRID_HEIGHT - 1
                 Dim neighbors As Integer = CountLiveNeighbors(x, y)
                 
-                If currentGrid(x, y) Then
+                If Gird(x, y) Then
                     ' Live cell rules
                     nextGrid(x, y) = (neighbors = 2 OrElse neighbors = 3)
                 Else
@@ -562,7 +562,7 @@ Public Class GameOfLifeForm
                 If ny < 0 Then ny = GRID_HEIGHT - 1
                 If ny >= GRID_HEIGHT Then ny = 0
                 
-                If currentGrid(nx, ny) Then count += 1
+                If Gird(nx, ny) Then count += 1
             Next
         Next
         
@@ -573,8 +573,8 @@ Public Class GameOfLifeForm
     ''' Swap the current and next grids
     
     Private Sub SwapGrids()
-        Dim temp As Boolean(,) = currentGrid
-        currentGrid = nextGrid
+        Dim temp As Boolean(,) = Gird
+        Gird = nextGrid
         nextGrid = temp
         Array.Clear(nextGrid, 0, nextGrid.Length)
     End Sub
@@ -588,7 +588,7 @@ Public Class GameOfLifeForm
         Dim population As Integer = 0
         For x As Integer = 0 To GRID_WIDTH - 1
             For y As Integer = 0 To GRID_HEIGHT - 1
-                If currentGrid(x, y) Then population += 1
+                If Gird(x, y) Then population += 1
             Next
         Next
         populationLabel.Text = $"Population: {population}"
@@ -624,7 +624,7 @@ Public Class GameOfLifeForm
         ' Draw live cells
         For x As Integer = 0 To GRID_WIDTH - 1
             For y As Integer = 0 To GRID_HEIGHT - 1
-                If currentGrid(x, y) Then
+                If Gird(x, y) Then
                     ' Color based on position for visual interest
                     Dim color As Color = Color.FromArgb(
                         100 + x Mod 155,
