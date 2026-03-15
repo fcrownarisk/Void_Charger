@@ -109,7 +109,6 @@ void display_all_quarks() {
         init_quark(&quarks[i], (QuarkType)i);
     }
 }
-    
     return 0;
 
 }
